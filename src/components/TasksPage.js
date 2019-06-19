@@ -30,7 +30,7 @@ export default class TasksPage extends Component {
   }
 
   onCreateTask = (e) => {
-    e.preventDevault();
+    e.preventDefault();
     this.props.onCreateTask({
       title: this.state.title,
       description: this.state.description,
