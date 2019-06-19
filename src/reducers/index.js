@@ -20,9 +20,10 @@ export default function tasks(state = { tasks: [] }, action) {
       }
     }
     case 'CREATE_TASK_SUCCEEDED': {
-      return {
-        tasks: state.tasks.concat(action.payload.task),
-      }
+      return [...tasks, action.payload.task]
+      // return {
+      //   tasks: state.tasks.concat(action.payload.task),
+      // }
     }
     case 'EDIT_TASK_SUCCEEDED': {
       const { payload } = action;
