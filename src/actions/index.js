@@ -29,11 +29,14 @@ export function fetchTasksSucceeded(tasks) {
 
 export function fetchTasks() {
   return dispatch => {
-    api.fetchTasks()
-    .then(resp => {
-      dispatch(fetchTasksSucceeded(resp.data));
+    dispatch(fetchTasksStarted());
+
+    api.fetchTasks().then(resp => {
+      setTimeout(() => {
+        dispatch(fetchTasksSucceeded(resp.data));
+      }, 2000);
     });
-  }
+  };
 }
 
 function editTaskSucceeded(task) {
@@ -57,4 +60,10 @@ export function editTask(id, params = {}) {
 
 function getTaskById(tasks, id) {
   return tasks.find(task => task.id === id);
+}
+
+function fetchTasksStarted() {
+  return {
+    type: 'FETCH_TASKS_STARTED',
+  }
 }
