@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="main-content">
-        {this.props.error && <FlashMessage message={this.orops.error} />}
+        {this.props.error && <FlashMessage message={this.props.error} />}
         <div className="main-content">
           <TasksPage
             tasks={this.props.tasks}

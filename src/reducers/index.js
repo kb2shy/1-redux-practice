@@ -1,6 +1,7 @@
 const initialState = {
   tasks: [],
   isLoading: false,
+  error: null,
 }
 
 export default function tasks(state = initialState, action) {
@@ -37,6 +38,13 @@ export default function tasks(state = initialState, action) {
         ...state,
         isLoading: true,
       };
+    }
+    case 'FETCH_TASKS_FAILED':  {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error,
+      }
     }
     default: {
       return state;
